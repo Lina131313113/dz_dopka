@@ -1,0 +1,46 @@
+public class Main {
+    public void printSpeedingWarning(int speedLimit, int currenSpeed) {
+        if (currenSpeed - speedLimit >= 20) {
+            System.out.println("Вы превысили корость. Может прийти штраф");
+        }
+    }
+
+    public void printSpeedingTicket(int speedLimit, int currenSpeed) {
+        int overspeed = currenSpeed - speedLimit;
+        if (overspeed >= 20) {
+            int fine = 0;
+
+            if (overspeed >= 20 && overspeed < 40) {
+                fine = 500;
+            } else if (overspeed >= 40 && overspeed < 60) {
+                fine = 1000;
+            } else if (overspeed >= 60 && overspeed < 80) {
+                fine = 2500;
+            } else if (overspeed >= 80) {
+                fine = 5000;
+            }
+
+            System.out.println("Может прийти штраф: " + fine + " рублей!");
+        }
+    }
+
+    public String processTraafficLightSignal(String color) {
+        if (color == "зеленый") {
+            return "можно ехать";
+        } else if (color == "желетый" || color == "красный") {
+            return "стой";
+        } else {
+            return "перезапросить датчики";
+        }
+    }
+    
+    public static void main(String[] args) {
+        Main main = new Main();
+
+        main.printSpeedingWarning(60, 85);
+        main.printSpeedingTicket(60, 85);
+
+       
+        System.out.println(main.processTrafficLightSignal("синий"));
+    }
+}
